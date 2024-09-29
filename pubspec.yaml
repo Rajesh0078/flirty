@@ -1,0 +1,87 @@
+name: flirty
+description: "Flirty - The Dating world!"
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  page_animation_transition: ^1.0.0
+  dio: ^5.7.0
+  shared_preferences: ^2.3.2
+  flutter_riverpod: ^2.5.1
+  flutter_svg: ^2.0.10+1
+  flutter_secure_storage: ^9.2.2
+  flutter_native_splash: ^2.4.1
+  flutter_launcher_icons: ^0.13.1
+  carousel_slider: ^5.0.0
+  marquee_list: ^1.0.0
+  country_picker: ^2.0.26
+  firebase_auth: ^5.3.1
+  firebase_core: ^3.6.0
+  sms_autofill: ^2.4.0
+  lottie: ^3.1.2
+  flutter_sliding_toast: ^1.4.2
+  flutter_holo_date_picker: ^2.0.0
+  dotted_border: ^2.1.0
+  image_picker: ^1.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icons/launcher_icon.png"
+  adaptive_icon_background: "#FF0661"
+  min_sdk_android: 21
+  ios: true
+  remove_alpha_ios: true
+  background_color_ios: "#FF0661"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/icons/splash_icon.png
+  android_gravity: center
+  android_12:
+    image: assets/icons/splash_icon.png
+    color: "#FFFFFF"
+  android: true
+  ios: true
+  fullscreen: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg/
+    - assets/lottie/
+    - assets/icons/
+
+  fonts:
+    - family: Gazpacho
+      fonts:
+        - asset: assets/fonts/Gazpacho Black.ttf
+          weight: 900
+        - asset: assets/fonts/Gazpacho Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Gazpacho Heavy.ttf
+          weight: 800
+        - asset: assets/fonts/Gazpacho Light.ttf
+          weight: 300
+        - asset: assets/fonts/Gazpacho Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Gazpacho Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Gazpacho Thin.ttf
+          weight: 100

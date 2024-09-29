@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "308543078675",
+    "project_id": "relu-a6e15",
+    "storage_bucket": "relu-a6e15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308543078675:android:493704d483c6a0fa221ae6",
+        "android_client_info": {
+          "package_name": "com.example.flirty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308543078675-0haira1o2309lgc1nqfqc1l7qm4asl1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1PoTq4P0Pi065KOfnCRRptvvFmRBJ7w8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308543078675-0haira1o2309lgc1nqfqc1l7qm4asl1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
