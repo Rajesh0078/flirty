@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CAppTheme.appTheme,
+      title: "Flirty",
       initialRoute: "/",
       onGenerateRoute: AppRoutes.generateRoute,
     );

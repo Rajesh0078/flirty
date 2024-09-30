@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flirty/commons/widgets/loader_screen.dart';
+import 'package:flirty/commons/widgets/logo_title.dart';
 import 'package:flirty/constants/colors.dart';
 import 'package:flirty/features/login/services/login_service.dart';
 import 'package:flirty/routes/app_routes.dart';
@@ -63,29 +64,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/svg/logo.svg",
-                          height: 27,
-                          colorFilter: const ColorFilter.mode(
-                            CColors.primary,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        const SizedBox(width: 7),
-                        const Text(
-                          "roaster",
-                          style: TextStyle(
-                            color: CColors.primary,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
+                    const LogoWidget(),
+                    const SizedBox(height: 24),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 40, vertical: 20),
@@ -109,7 +89,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               controller: _phoneController,
                               style: const TextStyle(
                                 fontWeight: FontWeight.w600,
-                                letterSpacing: 2,
                                 fontSize: 18,
                               ),
                               decoration: InputDecoration(

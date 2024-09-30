@@ -45,6 +45,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                             color: CColors.primary,
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
+                            fontFamily: "Gazpacho",
                           ),
                         )
                       ],
@@ -71,15 +72,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: Column(
                   children: [
                     const Spacer(flex: 2),
-                    const Text(
+                    Text(
                       "Discover Love where your story begins.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        height: 1.3,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const Spacer(flex: 1),
                     const Text(
@@ -89,6 +85,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         color: Colors.black,
                         fontSize: 14,
                         height: 1.3,
+                        fontFamily: "Geologica",
                       ),
                     ),
                     const Spacer(flex: 2),

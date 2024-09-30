@@ -99,7 +99,6 @@ class _RegisterOtpVerificationScreenState
                       style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 1.3,
                       ),
                     ),
                     const SizedBox(height: 28),

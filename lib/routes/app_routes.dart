@@ -1,6 +1,9 @@
+import 'package:flirty/features/chat/screens/chat_screen.dart';
 import 'package:flirty/features/home/screens/home_screen.dart';
 import 'package:flirty/features/login/screens/login_screen.dart';
+import 'package:flirty/features/matches/screens/matches_screen.dart';
 import 'package:flirty/features/onboarding_screen/screens/onboarding_screen.dart';
+import 'package:flirty/features/profile/screens/profile_screen.dart';
 import 'package:flirty/features/registration/screens/phone_number_screen.dart';
 import 'package:flirty/features/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +16,9 @@ class AppRoutes {
   static const String register = '/register';
   static const String login = '/login';
   static const String home = '/home';
+  static const String matches = '/matches';
+  static const String profile = '/profile';
+  static const String chat = '/chat';
 
   // Function to generate routes
 
@@ -34,6 +40,15 @@ class AppRoutes {
         break;
       case home:
         page = const HomeScreen();
+        break;
+      case matches:
+        page = const MatchesScreen();
+        break;
+      case chat:
+        page = const ChatScreen();
+        break;
+      case profile:
+        page = const ProfileScreen();
         break;
       default:
         return MaterialPageRoute(

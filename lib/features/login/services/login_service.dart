@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flirty/features/home/screens/home_screen.dart';
 import 'package:flirty/features/login/screens/otp_verification_screen.dart';
+import 'package:flirty/provider/auth_provider.dart';
+import 'package:flirty/provider/user_provider.dart';
 import 'package:flirty/routes/api_routes.dart';
 import 'package:flirty/utils/helpers/show_toaster.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:page_animation_transition/animations/fade_animation_transition.dart';
 import 'package:page_animation_transition/page_animation_transition.dart';
 
@@ -21,7 +25,7 @@ class LoginService {
         final data = response.data;
         if (data['success']) {
           ShowToaster().succeesToast(context, data['message']);
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
             PageAnimationTransition(
               page: OtpVerificationScreen(phoneNumber: phone),
@@ -43,7 +47,8 @@ class LoginService {
     }
   }
 
-  Future<bool> loginVerifyOtp(String phone, String otp) async {
+  Future<bool> loginVerifyOtp(
+      String phone, String otp, WidgetRef ref, BuildContext context) async {
     try {
       final response = await dio.post(
         ApiRoutes.login,
@@ -54,11 +59,22 @@ class LoginService {
       );
       if (response.statusCode == 200) {
         final data = response.data;
+        final user = response.data['user'];
         if (data['success']) {
-          print(data);
+          ShowToaster().succeesToast(context, data['message']);
+          ref.read(authProvider.notifier).login(data['token'], user['phone']);
+          ref.read(userProvider.notifier).initializeUser(user);
+          Navigator.pushAndRemoveUntil(
+            context,
+            PageAnimationTransition(
+              page: HomeScreen(),
+              pageAnimationType: FadeAnimationTransition(),
+            ),
+            (route) => false,
+          );
           return true;
         } else {
-          print(data);
+          ShowToaster().succeesToast(context, data['message']);
           return false;
         }
       } else {

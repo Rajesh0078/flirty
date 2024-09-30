@@ -27,6 +27,7 @@ class LogoWidget extends StatelessWidget {
             color: CColors.primary,
             fontSize: 32,
             fontWeight: FontWeight.bold,
+            fontFamily: "Gazpacho",
           ),
         ),
       ],

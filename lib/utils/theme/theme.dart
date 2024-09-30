@@ -8,7 +8,8 @@ class CAppTheme {
 
   static final ThemeData appTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Gazpacho',
+    // fontFamily: 'Gazpacho',
+    fontFamily: 'Geologica',
     textTheme: CTextTheme.textTheme,
     inputDecorationTheme: CTextFieldTheme.inputDecorationTheme,
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -24,10 +25,8 @@ class CAppTheme {
         shadowColor: Colors.transparent,
         textStyle: const TextStyle(
           color: Colors.white,
-          fontSize: 16,
-          letterSpacing: 1.2,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Gazpacho',
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
         ),
       ),
     ),

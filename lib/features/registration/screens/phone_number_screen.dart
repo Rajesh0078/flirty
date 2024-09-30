@@ -166,7 +166,6 @@ class _PhoneNumberScreenState extends ConsumerState<PhoneNumberScreen> {
                             keyboardType: TextInputType.phone,
                             style: const TextStyle(
                               fontWeight: FontWeight.w600,
-                              letterSpacing: 2,
                               fontSize: 18,
                             ),
                             validator: (value) {

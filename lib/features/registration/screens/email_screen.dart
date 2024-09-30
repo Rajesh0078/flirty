@@ -85,7 +85,6 @@ class _EmailScreenState extends ConsumerState<EmailScreen> {
                           ),
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 1.8,
                             fontSize: 18,
                           ),
                           validator: (value) {

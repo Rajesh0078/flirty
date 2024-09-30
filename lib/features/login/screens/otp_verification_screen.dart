@@ -3,10 +3,11 @@ import 'package:flirty/constants/colors.dart';
 import 'package:flirty/features/login/services/login_service.dart';
 import 'package:flirty/utils/helpers/show_toaster.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
+class OtpVerificationScreen extends ConsumerStatefulWidget {
   final String phoneNumber;
 
   const OtpVerificationScreen({super.key, required this.phoneNumber});
@@ -15,7 +16,7 @@ class OtpVerificationScreen extends StatefulWidget {
   _OtpVerificationScreenState createState() => _OtpVerificationScreenState();
 }
 
-class _OtpVerificationScreenState extends State<OtpVerificationScreen>
+class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen>
     with CodeAutoFill {
   String? _code = '';
   bool _isLoading = false;
@@ -49,7 +50,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
       _isLoading = true;
     });
 
-    await loginService.loginVerifyOtp(widget.phoneNumber, code);
+    await loginService.loginVerifyOtp(widget.phoneNumber, code, ref, context);
 
     setState(() {
       _isLoading = false;
@@ -115,7 +116,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen>
                       style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 1.3,
                       ),
                     ),
                     const SizedBox(height: 24),

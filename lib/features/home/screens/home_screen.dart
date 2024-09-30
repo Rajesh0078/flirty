@@ -1,10 +1,7 @@
-import 'package:flirty/features/onboarding_screen/screens/onboarding_screen.dart';
-import 'package:flirty/provider/auth_provider.dart';
-import 'package:flirty/provider/user_provider.dart';
+import 'package:flirty/commons/widgets/custom_bottom_bar.dart';
+import 'package:flirty/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:page_animation_transition/animations/fade_animation_transition.dart';
-import 'package:page_animation_transition/page_animation_transition.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -21,28 +18,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(userProvider);
-    print(user);
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Home screen"),
-            ElevatedButton(
-                onPressed: () {
-                  ref.read(authProvider.notifier).logout();
-                  ref.read(userProvider.notifier).removeUser();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      PageAnimationTransition(
-                          page: OnboardingScreen(),
-                          pageAnimationType: FadeAnimationTransition()),
-                      (route) => false);
-                },
-                child: Text("logout"))
-          ],
+    return const PopScope(
+      canPop: true,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Home screen"),
+            ],
+          ),
         ),
+        bottomNavigationBar: CustomBottomBar(currentRoute: AppRoutes.home),
       ),
     );
   }

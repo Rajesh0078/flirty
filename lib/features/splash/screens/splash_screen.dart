@@ -52,6 +52,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                           color: CColors.primary,
                           fontSize: 34,
                           fontWeight: FontWeight.w700,
+                          fontFamily: "Gazpacho",
                         ),
                       ),
                       Transform(
@@ -63,6 +64,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                             color: CColors.primary,
                             fontSize: 34,
                             fontWeight: FontWeight.w700,
+                            fontFamily: "Gazpacho",
                           ),
                         ),
                       ),
