@@ -6,6 +6,7 @@ import 'package:flirty/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -22,6 +23,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   String _selectedCountryFlag = '🇮🇳';
   LoginService loginService = LoginService();
   bool _isLoading = false;
+  String code = "";
 
   void loginWithPhoneNumber() async {
     setState(() {
@@ -29,9 +31,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     });
     FocusScope.of(context).unfocus();
     String phoneNumber = _countryCode + _phoneController.text;
-    await loginService.loginSendOtp(phoneNumber, context);
+    await loginService.loginSendOtp(phoneNumber, code, context);
     setState(() {
       _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    updateSignature();
+  }
+
+  Future<void> updateSignature() async {
+    final hash = await SmsAutoFill().getAppSignature;
+    setState(() {
+      code = hash;
     });
   }
 

@@ -6,12 +6,13 @@ class ApiRoutes {
 
   // login
   static const String loginSendOtp = '${basePath}users/login-otp';
-  static const String login = '${basePath}users/login';
+  static const String login = '${basePath}users/login-verify-otp';
   static const String getUser = '${basePath}users/me';
 
   // Register steps
   static const String registerSendOtp = '${basePath}users/register-otp';
-  static const String registerVerifyOtp = '${basePath}users/verify-otp';
+  static const String registerVerifyOtp =
+      '${basePath}users/register-verify-otp';
   static const String updateProfile = '${basePath}users/update';
   static const String uploadImges = '${basePath}users/upload-images';
 }

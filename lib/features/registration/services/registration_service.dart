@@ -14,14 +14,16 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 class RegistrationService {
   Dio dio = Dio();
 
-  Future<bool> registerSendOtp(String phone, BuildContext context) async {
+  Future<bool> registerSendOtp(
+      String phone, String hash, BuildContext context) async {
     try {
       final response = await dio.post(
         ApiRoutes.registerSendOtp,
-        data: {"phone": phone},
+        data: {"phone": phone, "hash": hash},
       );
       if (response.statusCode == 200) {
         final data = response.data;
+        print(data);
         if (data['success']) {
           ShowToaster().succeesToast(context, data['message']);
           Navigator.push(
@@ -53,7 +55,7 @@ class RegistrationService {
     try {
       final response = await dio.post(
         ApiRoutes.registerVerifyOtp,
-        data: {"phone": phone, "otp": otp},
+        data: {"phone": phone, "otpCode": otp},
       );
 
       if (response.statusCode == 200) {

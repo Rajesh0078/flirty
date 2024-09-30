@@ -5,6 +5,7 @@ import 'package:flirty/constants/colors.dart';
 import 'package:flirty/features/registration/services/registration_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class PhoneNumberScreen extends ConsumerStatefulWidget {
   const PhoneNumberScreen({super.key});
@@ -22,13 +23,28 @@ class _PhoneNumberScreenState extends ConsumerState<PhoneNumberScreen> {
   String _countryCode = '+91';
   String _selectedCountryFlag = '🇮🇳';
   bool _isLoading = false;
+  String code = "";
+
+  @override
+  void initState() {
+    super.initState();
+    updateSignature();
+  }
+
+  Future<void> updateSignature() async {
+    final hash = await SmsAutoFill().getAppSignature;
+    setState(() {
+      code = hash;
+    });
+  }
 
   void submitPhoneNumber() async {
+    FocusScope.of(context).unfocus();
     setState(() {
       _isLoading = true;
     });
     final phone = _countryCode + _phoneController.text;
-    await registrationService.registerSendOtp(phone, context);
+    await registrationService.registerSendOtp(phone, code, context);
     setState(() {
       _isLoading = false;
     });
@@ -175,8 +191,9 @@ class _PhoneNumberScreenState extends ConsumerState<PhoneNumberScreen> {
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {
-                                if (_formKey.currentState?.validate() ??
-                                    false) {
+                                if ((_formKey.currentState?.validate() ??
+                                        false) ==
+                                    true) {
                                   submitPhoneNumber();
                                 } else {
                                   setState(() {

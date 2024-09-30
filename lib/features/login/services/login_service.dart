@@ -9,11 +9,12 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 class LoginService {
   Dio dio = Dio();
 
-  Future<bool> loginSendOtp(String phone, BuildContext context) async {
+  Future<bool> loginSendOtp(
+      String phone, String hash, BuildContext context) async {
     try {
       final response = await dio.post(
         ApiRoutes.loginSendOtp,
-        data: {"phone": phone},
+        data: {"phone": phone, "hash": hash},
       );
 
       if (response.statusCode == 200) {
@@ -48,7 +49,7 @@ class LoginService {
         ApiRoutes.login,
         data: {
           'phone': phone,
-          'otp': otp,
+          'otpCode': otp,
         },
       );
       if (response.statusCode == 200) {

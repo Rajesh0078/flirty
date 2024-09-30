@@ -17,10 +17,37 @@ class RegisterOtpVerificationScreen extends ConsumerStatefulWidget {
 }
 
 class _RegisterOtpVerificationScreenState
-    extends ConsumerState<RegisterOtpVerificationScreen> {
+    extends ConsumerState<RegisterOtpVerificationScreen> with CodeAutoFill {
   TextEditingController otpController = TextEditingController();
   RegistrationService registrationService = RegistrationService();
   bool _isLoading = false;
+  String? _code; // This will store the auto-filled OTP code
+
+  @override
+  void initState() {
+    super.initState();
+    SmsAutoFill().listenForCode(); // Start listening for SMS with OTP
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    cancel(); // Cancel the SMS listener
+  }
+
+  @override
+  void codeUpdated() {
+    setState(() {
+      _code = code; // Auto-fill the OTP code when received
+      otpController.text = _code ?? ""; // Update the OTP input field
+    });
+
+    // Automatically verify the OTP when it's fully received
+    if (_code != null && _code!.length == 6) {
+      FocusScope.of(context).unfocus(); // Dismiss the keyboard
+      verifyOtp(); // Call OTP verification function
+    }
+  }
 
   void verifyOtp() async {
     if (otpController.text.length < 6) {
