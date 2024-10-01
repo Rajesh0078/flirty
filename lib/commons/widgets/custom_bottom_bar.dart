@@ -4,74 +4,58 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomBar extends StatelessWidget {
-  final String currentRoute; // To identify the current route
+  final String currentRoute;
 
-  const CustomBottomBar({Key? key, required this.currentRoute})
-      : super(key: key);
+  const CustomBottomBar({super.key, required this.currentRoute});
 
   @override
   Widget build(BuildContext context) {
-    // return BottomAppBar(
-    //   height: 64,
-    //   child: Row(
-    //     mainAxisAlignment:
-    //         MainAxisAlignment.spaceAround, // Space evenly between items
-    //     children: [
-    //       _buildNavItem(
-    //         context,
-    //         AppRoutes.home,
-    //         "assets/svg/logo.svg",
-    //         height: 24,
-    //       ),
-    //       _buildNavItem(
-    //         context,
-    //         AppRoutes.matches,
-    //         "assets/svg/matches.svg",
-    //         height: 20,
-    //       ),
-    //       _buildNavItem(
-    //         context,
-    //         AppRoutes.chat,
-    //         "assets/svg/chat.svg",
-    //         height: 20,
-    //       ),
-    //       _buildNavItem(
-    //         context,
-    //         AppRoutes.profile,
-    //         "assets/svg/person.svg",
-    //         height: 25,
-    //       ),
-    //     ],
-    //   ),
-    // );
     return Container(
       width: double.infinity,
-      height: 64,
-      color: const Color(0xFFF3F3F3),
+      height: 65,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.07),
+            offset: const Offset(0, -2),
+            blurRadius: 5,
+            spreadRadius: 1,
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           buildbottombutton(
+            "Home",
             AppRoutes.home,
             "assets/svg/logo.svg",
+            24,
             currentRoute,
             context,
           ),
           buildbottombutton(
+            "Matches",
             AppRoutes.matches,
             "assets/svg/matches.svg",
+            22,
             currentRoute,
             context,
           ),
           buildbottombutton(
+            "Chat",
             AppRoutes.chat,
             "assets/svg/chat.svg",
+            24,
             currentRoute,
             context,
           ),
           buildbottombutton(
+            "Profile",
             AppRoutes.profile,
             "assets/svg/person.svg",
+            22,
             currentRoute,
             context,
           ),
@@ -81,12 +65,11 @@ class CustomBottomBar extends StatelessWidget {
   }
 }
 
-Expanded buildbottombutton(
-    String route, String icon, String currentRouteName, BuildContext context) {
-  final textColor =
-      route == currentRouteName ? CColors.primary : CColors.textColor;
-  final Color borderColor =
-      currentRouteName == route ? CColors.primary : const Color(0xFFE8E6EA);
+Expanded buildbottombutton(String name, String route, String icon,
+    double height, String currentRouteName, BuildContext context) {
+  final textColor = route == currentRouteName
+      ? CColors.primary
+      : const Color.fromARGB(255, 127, 123, 123);
   return Expanded(
     child: GestureDetector(
       onTap: () {
@@ -96,27 +79,28 @@ Expanded buildbottombutton(
           Navigator.pushReplacementNamed(context, route);
         }
       },
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: borderColor,
-              width: 1.5,
-            ),
-          ),
-        ),
+      child: SizedBox(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset(
               icon,
-              height: 30,
+              height: height,
               colorFilter: ColorFilter.mode(
                 textColor,
                 BlendMode.srcIn,
               ),
             ),
+            const SizedBox(height: 3),
+            Text(
+              name,
+              style: TextStyle(
+                fontSize: 12.5,
+                color: textColor,
+                fontWeight: FontWeight.w500,
+              ),
+            )
           ],
         ),
       ),

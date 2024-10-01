@@ -10,6 +10,12 @@ class CAppTheme {
     useMaterial3: true,
     // fontFamily: 'Gazpacho',
     fontFamily: 'Geologica',
+    appBarTheme: const AppBarTheme(
+      elevation: 4,
+      centerTitle: false,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
+    ),
     textTheme: CTextTheme.textTheme,
     inputDecorationTheme: CTextFieldTheme.inputDecorationTheme,
     elevatedButtonTheme: ElevatedButtonThemeData(

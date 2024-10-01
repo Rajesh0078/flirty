@@ -1,4 +1,5 @@
 import 'package:flirty/features/home/screens/home_screen.dart';
+import 'package:flirty/features/home/services/all_user_provider.dart';
 import 'package:flirty/features/onboarding_screen/screens/onboarding_screen.dart';
 import 'package:flirty/features/registration/screens/date_of_birth_screen.dart';
 import 'package:flirty/features/registration/screens/email_screen.dart';
@@ -33,6 +34,8 @@ class SplashService {
           (route) => false,
         );
       } else {
+        ref.read(authProvider.notifier).logout();
+        ref.read(userProvider.notifier).removeUser();
         print(response.data);
       }
     } catch (e) {
@@ -48,6 +51,7 @@ class SplashService {
     await Future.delayed(const Duration(seconds: 3));
     print(authStatus);
     if (authStatus['accessToken'] != null) {
+      ref.read(allUsersProvider);
       fetchUser(ref, context);
     } else {
       if (authStatus['isRegistrationStarted'] == true) {

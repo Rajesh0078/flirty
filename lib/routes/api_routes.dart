@@ -15,4 +15,6 @@ class ApiRoutes {
       '${basePath}users/register-verify-otp';
   static const String updateProfile = '${basePath}users/update';
   static const String uploadImges = '${basePath}users/upload-images';
+
+  static const String getAllUsers = '${basePath}users/all-users';
 }

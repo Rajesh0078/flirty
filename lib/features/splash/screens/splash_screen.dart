@@ -1,5 +1,5 @@
 import 'package:flirty/constants/colors.dart';
-import 'package:flirty/features/splash/splash_service.dart';
+import 'package:flirty/features/splash/services/splash_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
