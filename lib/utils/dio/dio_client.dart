@@ -30,4 +30,14 @@ class DioClient {
       rethrow;
     }
   }
+
+  Future<Response> post(String path, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.post(path, data: data);
+      return response;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }

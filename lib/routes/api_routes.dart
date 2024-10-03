@@ -17,4 +17,9 @@ class ApiRoutes {
   static const String uploadImges = '${basePath}users/upload-images';
 
   static const String getAllUsers = '${basePath}users/all-users';
+
+  // Chat
+  static const String getConvo = '${basePath}chat/get-my-convo';
+  static const String getChatList = '${basePath}chat/get-chat-list';
+  static const String sendMessage = '${basePath}chat/send';
 }

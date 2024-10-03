@@ -1,3 +1,4 @@
+import 'package:flirty/features/chat/services/chat_service.dart';
 import 'package:flirty/features/home/screens/home_screen.dart';
 import 'package:flirty/features/home/services/all_user_provider.dart';
 import 'package:flirty/features/onboarding_screen/screens/onboarding_screen.dart';
@@ -18,6 +19,7 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 
 class SplashService {
   DioClient dioClient = DioClient();
+  ChatService chatService = ChatService();
 
   Future<void> fetchUser(WidgetRef ref, BuildContext context) async {
     try {
@@ -37,6 +39,14 @@ class SplashService {
         ref.read(authProvider.notifier).logout();
         ref.read(userProvider.notifier).removeUser();
         print(response.data);
+        Navigator.pushAndRemoveUntil(
+          context,
+          PageAnimationTransition(
+            page: const OnboardingScreen(),
+            pageAnimationType: FadeAnimationTransition(),
+          ),
+          (route) => false,
+        );
       }
     } catch (e) {
       print(e);
@@ -52,6 +62,8 @@ class SplashService {
     print(authStatus);
     if (authStatus['accessToken'] != null) {
       ref.read(allUsersProvider);
+      chatService.fetchConversations(ref);
+      chatService.fetchMyChatList(ref);
       fetchUser(ref, context);
     } else {
       if (authStatus['isRegistrationStarted'] == true) {

@@ -45,7 +45,7 @@ class _RegisterOtpVerificationScreenState
     // Automatically verify the OTP when it's fully received
     if (_code != null && _code!.length == 6) {
       FocusScope.of(context).unfocus(); // Dismiss the keyboard
-      verifyOtp(); // Call OTP verification function
+      verifyOtp();
     }
   }
 
@@ -67,6 +67,7 @@ class _RegisterOtpVerificationScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           children: [

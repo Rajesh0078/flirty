@@ -108,7 +108,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.network(
-                            "https://cdn.pixabay.com/photo/2023/03/31/14/22/leo-7890130_960_720.jpg",
+                            user.profilePicture!,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -121,14 +121,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           height: 200,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.7),
-                                offset: const Offset(0, -2),
-                                blurRadius: 20,
-                                spreadRadius: 8,
-                              ),
-                            ],
+                            // boxShadow: [
+                            //   BoxShadow(
+                            //     color: Colors.black.withOpacity(0.7),
+                            //     offset: const Offset(0, -2),
+                            //     blurRadius: 20,
+                            //     spreadRadius: 8,
+                            //   ),
+                            // ],
                           ),
                         ),
                       ),
